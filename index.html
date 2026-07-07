@@ -3,474 +3,551 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aterno – Rapport Mensuel Mai 2026</title>
+<title>Aterno – Rapport Juin 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f6f9; color: #1a1a2e; padding: 24px 32px; max-width: 1600px; margin: 0 auto; }
-  .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%); border-radius: 16px; padding: 36px 40px; margin-bottom: 24px; color: white; }
-  .section { margin-bottom: 28px; }
-  .table-wrap { background: white; border-radius: 12px; overflow-x: auto; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
-  .camp-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  .camp-table thead tr { background: #1a1a2e; color: white; }
-  .camp-table thead th { padding: 11px 16px; text-align: left; font-weight: 600; font-size: 12px; letter-spacing: 0.3px; white-space: nowrap; }
-  .camp-table tbody tr { border-bottom: 1px solid #f0f0f5; }
-  .camp-table tbody tr:hover { background: #f8faff; }
-  .camp-table td { padding: 12px 16px; vertical-align: middle; background: white; white-space: normal; font-size: 13px; }
-  .camp-table tbody tr:last-child td { border-bottom: none; }
-  .camp-table td small { display: block; font-size: 11px; color: #9ca3af; margin-top: 2px; }
-  .budget-row td { background: #f0f4ff !important; font-weight: 700; color: #1d4ed8; font-size: 13px; }
-  .badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 9px; border-radius: 20px; font-size: 11px; font-weight: 600; white-space: nowrap; }
-  .b-live { background: #dcfce7; color: #15803d; }
-  .b-done { background: #f3f4f6; color: #6b7280; }
-  .b-enc  { background: #dbeafe; color: #1d4ed8; }
-  .form-ok  { background: #dcfce7; color: #15803d; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 20px; display: inline-block; }
-  .form-lp  { background: #f0fdf4; color: #166534; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 20px; display: inline-block; border: 1px solid #bbf7d0; }
-  .form-no  { background: #f3f4f6; color: #9ca3af; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 20px; display: inline-block; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f4f6f9;
+    color: #1a1a2e;
+    font-size: 13px;
+    line-height: 1.5;
+    padding: 24px 32px;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  .header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin-bottom: 24px;
+    color: white;
+  }
+  .header-eyebrow { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; opacity: 0.45; margin-bottom: 10px; }
+  .header-title { font-family: 'Inter', sans-serif; font-size: 36px; font-weight: 900; letter-spacing: -0.5px; line-height: 1.1; }
+  .header-sub { font-size: 15px; font-weight: 500; opacity: 0.7; margin-top: 4px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-pill { margin-top: 14px; display: inline-block; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 5px 16px; font-size: 12px; opacity: 0.8; }
+
+  .kpi-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-bottom: 24px; }
+  .kpi-card { background: white; border-radius: 14px; padding: 24px 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); text-align: center; }
+
+
+
+  .kpi-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #6b7280; margin-bottom: 8px; }
+  .kpi-value { font-family: 'Inter', sans-serif; font-size: 36px; font-weight: 800; line-height: 1; letter-spacing: -1.5px; }
+  .kpi-value.blue { color: #1d4ed8; }
+  .kpi-value.green { color: #15803d; }
+  .kpi-value.purple { color: #7c3aed; }
+  .kpi-sub { font-size: 11px; color: #9ca3af; margin-top: 6px; }
+
+  .sep { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+  .sep-pill { background: #22c55e; border-radius: 8px; padding: 6px 16px; display: flex; align-items: center; gap: 8px; box-shadow: 0 2px 8px rgba(34,197,94,0.3); }
+  .sep-pill span { font-size: 12px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: white; }
+  .sep-line { flex: 1; height: 1px; background: linear-gradient(to right, #22c55e40, transparent); }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: white; animation: pulse 1.5s infinite; }
+
   .legend { background: white; border-radius: 12px; padding: 16px 20px; margin-bottom: 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
   .legend h3 { font-size: 13px; font-weight: 700; color: #374151; margin-bottom: 10px; }
   .legend-grid { display: flex; flex-wrap: wrap; gap: 10px; }
   .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #4b5563; }
+
+  .section { margin-bottom: 28px; }
+  .section-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .section-tag { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #22c55e; margin-bottom: 2px; }
+  .section-title { font-size: 16px; font-weight: 800; color: #1a1a2e; }
+
+  .tbl-wrap { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
+  .tbl { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .tbl thead tr { background: #1a1a2e; color: white; }
+  .tbl thead th { padding: 11px 16px; text-align: left; font-weight: 600; font-size: 12px; letter-spacing: 0.3px; white-space: nowrap; }
+  .tbl thead th.r { text-align: right; }
+  .tbl thead th.c { text-align: center; }
+  .tbl tbody tr { border-bottom: 1px solid #f0f0f5; transition: background 0.1s; }
+  .tbl tbody tr:last-child { border-bottom: none; }
+  .tbl tbody tr:hover { background: #f8faff; }
+  .tbl td { padding: 12px 16px; vertical-align: middle; color: #374151; }
+  .tbl td.r { text-align: right; }
+  .tbl td.c { text-align: center; }
+  .tbl td.dim { color: #9ca3af; }
+  .tbl td small { display: block; font-size: 11px; color: #9ca3af; margin-top: 2px; }
+  .tbl-total td { background: #f0f4ff !important; font-weight: 700; color: #1d4ed8; }
+
+  .acc-tr { cursor: pointer; background: #f0f9ff; border-top: 1px solid #bfdbfe; }
+  .acc-tr td { padding: 10px 16px; text-align: center; font-size: 12px; font-weight: 600; color: #1d4ed8; }
+  .acc-tr:hover td { background: #dbeafe; }
+  .acc-content td { padding: 0 !important; background: #f8faff !important; }
+
+  .demo-wrap { padding: 20px 24px; display: grid; grid-template-columns: 180px 1fr; gap: 24px; align-items: start; }
+  .demo-label { font-size: 11px; font-weight: 700; color: #374151; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+
+  .gender-card { background: #f0f4ff; border-radius: 8px; padding: 8px 12px; margin-bottom: 6px; }
+  .gender-card:last-child { margin-bottom: 0; }
+  .gender-name { font-size: 11px; font-weight: 700; margin-bottom: 2px; }
+  .gender-num { font-family: 'Inter', sans-serif; font-size: 22px; font-weight: 900; line-height: 1.2; }
+  .gender-meta { font-size: 11px; color: #9ca3af; margin-top: 2px; }
+
+  .bar-r { display: grid; grid-template-columns: 48px 1fr 88px 72px; align-items: center; gap: 8px; margin-bottom: 5px; }
+  .bar-age { font-size: 11px; font-weight: 700; color: #374151; }
+  .bar-t { position: relative; height: 22px; background: #e8f0fe; border-radius: 5px; overflow: hidden; }
+  .bar-f { position: absolute; left: 0; top: 0; height: 100%; border-radius: 5px; display: flex; align-items: center; padding-left: 8px; }
+  .bar-f span { font-size: 10px; font-weight: 700; color: white; white-space: nowrap; }
+  .bar-of { position: absolute; right: 6px; top: 0; height: 100%; display: flex; align-items: center; }
+  .bar-of span { font-size: 10px; color: #6b7280; }
+  .bar-of2 { position: absolute; left: 8px; top: 0; height: 100%; display: flex; align-items: center; }
+  .bar-of2 span { font-size: 10px; color: #374151; font-weight: 500; }
+  .bar-cpl { font-size: 11px; color: #6b7280; text-align: right; }
+  .bar-cpl strong { color: #1a1a2e; }
+  .bar-amt { font-size: 10px; color: #9ca3af; text-align: right; }
+  .unk-row { margin-top: 8px; padding: 7px 12px; background: #f9fafb; border: 1px dashed #d1d5db; border-radius: 8px; display: flex; justify-content: space-between; font-size: 10px; color: #9ca3af; }
+
+  .sol-split { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .sol-block-title { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 2px solid; }
+
+  .st { display: inline-flex; align-items: center; gap: 4px; padding: 3px 9px; border-radius: 20px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+  .st-live { background: #dcfce7; color: #15803d; }
+  .st-done { background: #f3f4f6; color: #6b7280; }
+  .fb { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+  .fb-ok { background: #dcfce7; color: #15803d; }
+  .fb-lp { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+  .fb-no { background: #f3f4f6; color: #9ca3af; font-weight: 600; }
+
+  .num-big { font-family: 'Inter', sans-serif; font-size: 22px; font-weight: 900; letter-spacing: -0.3px; }
+  .num-green { color: #15803d; }
+
+  .vf-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 16px; }
+  .vf-stat { background: white; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px 16px; text-align: center; }
+  .vf-stat-label { font-size: 11px; color: #6b7280; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .vf-stat-value { font-family: 'Inter', sans-serif; font-size: 26px; font-weight: 900; color: #1a1a2e; line-height: 1; }
+  .vf-stat-value.green { color: #15803d; }
+  .vf-stat-value.blue { color: #1d4ed8; }
+  .vf-stat-sub { font-size: 10px; color: #9ca3af; margin-top: 3px; }
+
+  .hook { padding: 3px 9px; border-radius: 4px; font-size: 10.5px; font-weight: 700; }
+  .hook-g { background: #dcfce7; color: #15803d; }
+  .hook-m { background: #fef3c7; color: #92400e; }
+  .hook-b { background: #fee2e2; color: #991b1b; }
+
+  .insight { margin-top: 12px; padding: 12px 16px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 0 6px 6px 0; border-left: 3px solid #15803d; font-size: 12px; color: #065f46; line-height: 1.6; }
+
   .footer { text-align: center; font-size: 11px; color: #9ca3af; margin-top: 20px; padding-top: 16px; border-top: 1px solid #e5e7eb; }
-  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
 </style>
 </head>
 <body>
 
 <!-- HEADER -->
 <div class="header">
-  <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;opacity:0.45;margin-bottom:10px;">Rapport mensuel · Meta Ads</div>
-  <h1 style="font-size:28px;font-weight:900;letter-spacing:-1px;line-height:1.1;">ATERNO</h1>
-  <h2 style="font-size:15px;font-weight:500;opacity:0.7;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Rapport Mensuel — Campagnes Meta Ads</h2>
-  <div style="margin-top:14px;display:inline-block;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:5px 16px;font-size:12px;opacity:0.8;">
-    📅 Mois de <strong>Mai 2026</strong> &nbsp;·&nbsp; Mis à jour le <strong>01/06/26</strong>
+  <div class="header-eyebrow">Rapport mensuel · Meta Ads</div>
+  <div class="header-title">ATERNO</div>
+  <div class="header-sub">Rapport Mensuel — Campagnes Meta Ads</div>
+  <div class="header-pill">Mois de <strong>Juin 2026</strong> &nbsp;·&nbsp; Mis à jour le <strong>07/07/26</strong></div>
+</div>
+
+<!-- KPI CARDS -->
+<div class="kpi-row" style="grid-template-columns:repeat(4,1fr);">
+  <div class="kpi-card blue">
+    <div class="kpi-label">Total dépensé</div>
+    <div class="kpi-value blue">15 926 €</div>
+    <div class="kpi-sub">Mois de Juin 2026</div>
+  </div>
+  <div class="kpi-card green">
+    <div class="kpi-label">Total leads</div>
+    <div class="kpi-value green">467</div>
+    <div class="kpi-sub">BT + Solaire FL + LP</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">RDV obtenus</div>
+    <div class="kpi-value" style="color:#d97706;">118</div>
+    <div class="kpi-sub">BT 12 · Solaire 106</div>
+  </div>
+  <div class="kpi-card purple">
+    <div class="kpi-label">Impressions totales</div>
+    <div class="kpi-value purple">1 030 516</div>
+    <div class="kpi-sub">Toutes campagnes confondues</div>
   </div>
 </div>
 
-<!-- RECAP GLOBAL -->
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:24px;">
-  <div style="background:white;border-radius:14px;padding:24px 28px;box-shadow:0 2px 8px rgba(0,0,0,0.08);border-top:4px solid #1d4ed8;text-align:center;">
-    <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#6b7280;margin-bottom:8px;">Total dépensé</div>
-    <div style="font-size:36px;font-weight:900;color:#1d4ed8;line-height:1;">31 534 €</div>
-    <div style="font-size:11px;color:#9ca3af;margin-top:6px;">Mois de Mai 2026</div>
-  </div>
-  <div style="background:white;border-radius:14px;padding:24px 28px;box-shadow:0 2px 8px rgba(0,0,0,0.08);border-top:4px solid #22c55e;text-align:center;">
-    <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#6b7280;margin-bottom:8px;">Total leads</div>
-    <div style="font-size:36px;font-weight:900;color:#15803d;line-height:1;">695</div>
-    <div style="font-size:11px;color:#9ca3af;margin-top:6px;">Leads générés ce mois</div>
-  </div>
-  <div style="background:white;border-radius:14px;padding:24px 28px;box-shadow:0 2px 8px rgba(0,0,0,0.08);border-top:4px solid #7c3aed;text-align:center;">
-    <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#6b7280;margin-bottom:8px;">Impressions totales</div>
-    <div style="font-size:36px;font-weight:900;color:#7c3aed;line-height:1;">1 833 470</div>
-    <div style="font-size:11px;color:#9ca3af;margin-top:6px;">Toutes campagnes confondues</div>
-  </div>
-</div>
-
-<!-- SÉPARATEUR -->
-<div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
-  <div style="background:#22c55e;border-radius:8px;padding:6px 16px;display:flex;align-items:center;gap:8px;box-shadow:0 2px 8px rgba(34,197,94,0.3);">
-    <div style="width:8px;height:8px;border-radius:50%;background:white;animation:pulse 1.5s infinite;"></div>
-    <span style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:white;">Campagnes actives</span>
-  </div>
-  <div style="flex:1;height:1px;background:linear-gradient(to right,#22c55e40,transparent);"></div>
+<!-- SEP -->
+<div class="sep">
+  <div class="sep-pill"><div class="dot"></div><span>Campagnes actives</span></div>
+  <div class="sep-line"></div>
 </div>
 
 <!-- LÉGENDE -->
 <div class="legend">
-  <h3>📋 Légende des formulaires</h3>
+  <h3>Légende des formulaires</h3>
   <div class="legend-grid">
-    <div class="legend-item"><span class="form-ok">✅ Formulaire OK</span> Formulaire actif et fonctionnel</div>
-    <div class="legend-item"><span class="form-lp">🔗 LP</span> Redirige vers une landing page</div>
-    <div class="legend-item"><span class="form-no">— Sans formulaire</span> Campagne vers site web ou DM</div>
+    <div class="legend-item"><span class="fb fb-ok">Formulaire OK</span> Formulaire actif et fonctionnel</div>
+    <div class="legend-item"><span class="fb fb-lp">LP</span> Redirige vers une landing page</div>
+    <div class="legend-item"><span class="fb fb-no">— Sans formulaire</span> Campagne vers site web ou DM</div>
   </div>
 </div>
 
 <!-- BILAN THERMIQUE -->
 <div class="section">
-  <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+  <div class="section-head">
     <span style="font-size:18px;">🔥</span>
     <div>
-      <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#22c55e;margin-bottom:2px;">Campagne active</div>
-      <div style="font-size:16px;font-weight:800;color:#1a1a2e;">Bilan Thermique</div>
+      <div class="section-tag">Campagne active</div>
+      <div class="section-title">Bilan Thermique</div>
     </div>
   </div>
-  <div class="table-wrap">
-    <table class="camp-table" style="table-layout:fixed;width:100%;">
-      <colgroup><col style="width:13%"><col style="width:18%"><col style="width:12%"><col style="width:16%"><col style="width:13%"><col style="width:14%"><col style="width:14%"></colgroup>
+  <div class="tbl-wrap">
+    <table class="tbl" style="table-layout:fixed;width:100%;">
+      <colgroup><col style="width:13%"><col style="width:19%"><col style="width:12%"><col style="width:16%"><col style="width:13%"><col style="width:14%"><col style="width:13%"></colgroup>
       <thead><tr><th>Période</th><th>Audience cible</th><th>Résultats</th><th>Nb de visuels actifs</th><th>Montant dépensé</th><th>Statut campagne</th><th>Statut formulaire</th></tr></thead>
       <tbody>
         <tr>
-          <td>01/05/26 → 31/05/26</td>
-          <td><strong>Nouveaux prospects</strong><small>Adultes 30-70 ans, toute la France</small></td>
-          <td><strong style="font-size:16px;color:#15803d;font-weight:800;">250</strong><small>leads · CPL 26,03 €</small></td>
-          <td><strong>13 visuels actifs</strong><small>2 arrêtés (optimisation)</small></td>
-          <td><strong>6 506,67 €</strong></td>
-          <td><span class="badge b-live">🟢 En ligne</span></td>
-          <td><span class="form-ok">✅ Formulaire OK</span></td>
+          <td>01/06/26 → 30/06/26</td>
+          <td><strong>Nouveaux prospects</strong><small>Adultes 30-70 ans · France</small></td>
+          <td><span class="num-big num-green">92</span><small>leads · CPL 33,87 €</small></td>
+          <td><strong>6 visuels actifs</strong><small>9 arrêtés</small></td>
+          <td><strong>3 116,32 €</strong></td>
+          <td><span class="st st-live">En ligne</span></td>
+          <td><span class="fb fb-ok">Formulaire OK</span></td>
         </tr>
-        <tr onclick="toggleDemogBT()" id="row-demog-bt-trigger" style="cursor:pointer;background:#f0f9ff;border-top:1px solid #bfdbfe;">
-          <td colspan="7" style="padding:10px 16px;text-align:center;background:#f0f9ff;">
-            <span style="font-size:12px;font-weight:600;color:#1d4ed8;display:flex;align-items:center;justify-content:center;gap:8px;">
-              👥 Accéder aux données démographiques <span id="demog-bt-arrow">▼</span>
-            </span>
-          </td>
+        <tr class="acc-tr" onclick="toggleBT()">
+          <td colspan="7">Accéder aux données démographiques <span id="bt-arr">▼</span></td>
         </tr>
-        <tr id="row-demog-bt" style="display:none;">
-          <td colspan="7" style="padding:0;background:#f8faff;">
-            <div style="padding:16px 20px;">
-              <div style="display:grid;grid-template-columns:180px 1fr;gap:20px;align-items:start;">
-                <div>
-                  <div style="font-size:11px;font-weight:700;color:#374151;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">Genre</div>
-                  <div style="display:flex;flex-direction:column;gap:6px;">
-                    <div style="background:#f0f4ff;border-radius:8px;padding:8px 12px;border-left:3px solid #0ea5e9;">
-                      <div style="font-size:11px;font-weight:700;color:#0ea5e9;margin-bottom:2px;">♂ Hommes</div>
-                      <div style="font-size:18px;font-weight:900;color:#1a1a2e;line-height:1.2;">153 <span style="font-size:11px;color:#6b7280;font-weight:400;">leads</span></div>
-                      <div style="font-size:11px;color:#9ca3af;">61,2 % · CPL <strong style="color:#374151;">25,65 €</strong></div>
-                    </div>
-                    <div style="background:#f0f4ff;border-radius:8px;padding:8px 12px;border-left:3px solid #6366f1;">
-                      <div style="font-size:11px;font-weight:700;color:#6366f1;margin-bottom:2px;">♀ Femmes</div>
-                      <div style="font-size:18px;font-weight:900;color:#1a1a2e;line-height:1.2;">97 <span style="font-size:11px;color:#6b7280;font-weight:400;">leads</span></div>
-                      <div style="font-size:11px;color:#9ca3af;">38,8 % · CPL <strong style="color:#374151;">25,97 €</strong></div>
-                    </div>
-                  </div>
+        <tr id="bt-demo" style="display:none;" class="acc-content">
+          <td colspan="7">
+            <div class="demo-wrap">
+              <div>
+                <div class="demo-label">Genre</div>
+                <div class="gender-card">
+                  <div class="gender-name" style="color:#0ea5e9;">♂ Hommes</div>
+                  <div class="gender-num">57 <span style="font-size:13px;font-weight:400;color:#9ca3af;">leads</span></div>
+                  <div class="gender-meta">62,6 % · CPL 32,54 €</div>
                 </div>
-                <div>
-                  <div style="font-size:11px;font-weight:700;color:#374151;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">Par tranche d'âge</div>
-                  <div style="display:flex;flex-direction:column;gap:5px;">
-                    <div style="display:grid;grid-template-columns:48px 1fr 88px 72px;align-items:center;gap:8px;">
-                      <div style="font-size:11px;font-weight:700;color:#374151;">65+</div>
-                      <div style="position:relative;height:22px;background:#e8f0fe;border-radius:5px;overflow:hidden;">
-                        <div style="position:absolute;left:0;top:0;height:100%;width:55.6%;background:linear-gradient(90deg,#1d4ed8,#3b82f6);border-radius:5px;display:flex;align-items:center;padding-left:8px;">
-                          <span style="font-size:10px;font-weight:700;color:white;white-space:nowrap;">139 leads · 55,6 %</span>
-                        </div>
-                        <div style="position:absolute;right:6px;top:0;height:100%;display:flex;align-items:center;"><span style="font-size:10px;color:#6b7280;">♂82 · ♀57</span></div>
-                      </div>
-                      <div style="font-size:11px;color:#6b7280;text-align:right;">CPL <strong style="color:#1a1a2e;">27,99 €</strong></div>
-                      <div style="font-size:10px;color:#9ca3af;text-align:right;">3 890 €</div>
-                    </div>
-                    <div style="display:grid;grid-template-columns:48px 1fr 88px 72px;align-items:center;gap:8px;">
-                      <div style="font-size:11px;font-weight:700;color:#374151;">55-64</div>
-                      <div style="position:relative;height:22px;background:#e8f0fe;border-radius:5px;overflow:hidden;">
-                        <div style="position:absolute;left:0;top:0;height:100%;width:25.2%;background:linear-gradient(90deg,#3b82f6,#60a5fa);border-radius:5px;display:flex;align-items:center;padding-left:8px;">
-                          <span style="font-size:10px;font-weight:700;color:white;white-space:nowrap;">63 · 25,2 %</span>
-                        </div>
-                        <div style="position:absolute;right:6px;top:0;height:100%;display:flex;align-items:center;"><span style="font-size:10px;color:#6b7280;">♂38 · ♀25</span></div>
-                      </div>
-                      <div style="font-size:11px;color:#6b7280;text-align:right;">CPL <strong style="color:#1a1a2e;">23,45 €</strong></div>
-                      <div style="font-size:10px;color:#9ca3af;text-align:right;">1 477 €</div>
-                    </div>
-                    <div style="display:grid;grid-template-columns:48px 1fr 88px 72px;align-items:center;gap:8px;">
-                      <div style="font-size:11px;font-weight:700;color:#374151;">45-54</div>
-                      <div style="position:relative;height:22px;background:#e8f0fe;border-radius:5px;overflow:hidden;">
-                        <div style="position:absolute;left:0;top:0;height:100%;width:10.8%;background:linear-gradient(90deg,#60a5fa,#93c5fd);border-radius:5px;"></div>
-                        <div style="position:absolute;left:8px;top:0;height:100%;display:flex;align-items:center;"><span style="font-size:10px;font-weight:600;color:#374151;">27 · 10,8 %</span></div>
-                        <div style="position:absolute;right:6px;top:0;height:100%;display:flex;align-items:center;"><span style="font-size:10px;color:#6b7280;">♂17 · ♀10</span></div>
-                      </div>
-                      <div style="font-size:11px;color:#6b7280;text-align:right;">CPL <strong style="color:#1a1a2e;">22,14 €</strong></div>
-                      <div style="font-size:10px;color:#9ca3af;text-align:right;">598 €</div>
-                    </div>
-                    <div style="display:grid;grid-template-columns:48px 1fr 88px 72px;align-items:center;gap:8px;">
-                      <div style="font-size:11px;font-weight:700;color:#374151;">35-44</div>
-                      <div style="position:relative;height:22px;background:#e8f0fe;border-radius:5px;overflow:hidden;">
-                        <div style="position:absolute;left:0;top:0;height:100%;width:4.4%;background:#93c5fd;border-radius:5px;"></div>
-                        <div style="position:absolute;left:8px;top:0;height:100%;display:flex;align-items:center;"><span style="font-size:10px;font-weight:600;color:#374151;">11 · 4,4 %</span></div>
-                        <div style="position:absolute;right:6px;top:0;height:100%;display:flex;align-items:center;"><span style="font-size:10px;color:#6b7280;">♂8 · ♀3</span></div>
-                      </div>
-                      <div style="font-size:11px;color:#6b7280;text-align:right;">CPL <strong style="color:#1a1a2e;">22,57 €</strong></div>
-                      <div style="font-size:10px;color:#9ca3af;text-align:right;">248 €</div>
-                    </div>
-                    <div style="display:grid;grid-template-columns:48px 1fr 88px 72px;align-items:center;gap:8px;">
-                      <div style="font-size:11px;font-weight:700;color:#374151;">25-34</div>
-                      <div style="position:relative;height:22px;background:#e8f0fe;border-radius:5px;overflow:hidden;">
-                        <div style="position:absolute;left:0;top:0;height:100%;width:4%;background:#bfdbfe;border-radius:5px;"></div>
-                        <div style="position:absolute;left:8px;top:0;height:100%;display:flex;align-items:center;"><span style="font-size:10px;font-weight:600;color:#374151;">10 · 4,0 %</span></div>
-                        <div style="position:absolute;right:6px;top:0;height:100%;display:flex;align-items:center;"><span style="font-size:10px;color:#6b7280;">♂8 · ♀2</span></div>
-                      </div>
-                      <div style="font-size:11px;color:#6b7280;text-align:right;">CPL <strong style="color:#1a1a2e;">22,92 €</strong></div>
-                      <div style="font-size:10px;color:#9ca3af;text-align:right;">229 €</div>
-                    </div>
-                  </div>
-                  <div style="margin-top:8px;font-size:10px;color:#9ca3af;">Genre inconnu exclu</div>
-                  <div style="margin-top:6px;background:#f9fafb;border:1px dashed #d1d5db;border-radius:8px;padding:7px 12px;display:flex;align-items:center;justify-content:space-between;">
-                    <span style="font-size:10px;color:#9ca3af;">⚠️ Genre inconnu (BT)</span>
-                    <span style="font-size:10px;color:#6b7280;font-weight:600;">0 leads · 63,94 € dépensés — inclus dans le total (250 leads)</span>
-                  </div>
+                <div class="gender-card">
+                  <div class="gender-name" style="color:#6366f1;">♀ Femmes</div>
+                  <div class="gender-num">34 <span style="font-size:13px;font-weight:400;color:#9ca3af;">leads</span></div>
+                  <div class="gender-meta">37,4 % · CPL 36,18 €</div>
                 </div>
+              </div>
+              <div>
+                <div class="demo-label">Par tranche d'âge</div>
+                <div class="bar-r"><div class="bar-age">65+</div><div class="bar-t"><div class="bar-f" style="width:42.9%;background:#1d4ed8;"><span>39 · 42,9%</span></div><div class="bar-of"><span>♂29 ♀10</span></div></div><div class="bar-cpl">CPL <strong>40,02 €</strong></div><div class="bar-amt">1 561 €</div></div>
+                <div class="bar-r"><div class="bar-age">55-64</div><div class="bar-t"><div class="bar-f" style="width:27.5%;background:#3b82f6;"><span>25 · 27,5%</span></div><div class="bar-of"><span>♂16 ♀9</span></div></div><div class="bar-cpl">CPL <strong>30,93 €</strong></div><div class="bar-amt">773 €</div></div>
+                <div class="bar-r"><div class="bar-age">45-54</div><div class="bar-t"><div class="bar-f" style="width:17.6%;background:#60a5fa;"></div><div class="bar-of2"><span>16 · 17,6%</span></div><div class="bar-of"><span>♂7 ♀9</span></div></div><div class="bar-cpl">CPL <strong>27,04 €</strong></div><div class="bar-amt">433 €</div></div>
+                <div class="bar-r"><div class="bar-age">25-34</div><div class="bar-t"><div class="bar-f" style="width:6.6%;background:#93c5fd;"></div><div class="bar-of2"><span>6 · 6,6%</span></div><div class="bar-of"><span>♂3 ♀3</span></div></div><div class="bar-cpl">CPL <strong>18,56 €</strong></div><div class="bar-amt">111 €</div></div>
+                <div class="bar-r"><div class="bar-age">35-44</div><div class="bar-t"><div class="bar-f" style="width:5.5%;background:#bfdbfe;"></div><div class="bar-of2"><span>5 · 5,5%</span></div><div class="bar-of"><span>♂2 ♀3</span></div></div><div class="bar-cpl">CPL <strong>41,35 €</strong></div><div class="bar-amt">207 €</div></div>
+                <div class="unk-row"><span>Genre inconnu (BT)</span><strong>1 lead · 31,42 € — inclus dans le total (92 leads)</strong></div>
               </div>
             </div>
           </td>
         </tr>
-        <tr class="budget-row">
-          <td colspan="2">💰 Total Bilan Thermique</td>
-          <td><strong style="color:#15803d;">250 leads</strong><small>CPL moy. 26,03 €</small></td>
+        <tr class="tbl-total">
+          <td colspan="2">Total Bilan Thermique</td>
+          <td><strong style="color:#15803d;">92 leads</strong><small style="color:#1d4ed8;">CPL moy. 33,87 €</small></td>
           <td></td>
-          <td><strong>6 506,67 €</strong></td>
+          <td><strong>3 116,32 €</strong></td>
           <td colspan="2"></td>
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <!-- RDV BT -->
+  <div style="margin-top:10px;background:white;border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.07);">
+    <div style="background:#f8faff;border-bottom:1px solid #e5e7eb;padding:12px 20px;display:flex;align-items:center;gap:8px;">
+      <span style="font-size:13px;"></span>
+      <span style="font-size:13px;font-weight:700;color:#1a1a2e;">Taux de transformation en RDV</span>
+      <span style="font-size:11px;color:#9ca3af;margin-left:4px;">Source CRM · Formulaire (FB-F)</span>
+    </div>
+    <div style="padding:16px 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+      <div style="text-align:center;padding:12px;background:#f8faff;border-radius:8px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6b7280;margin-bottom:6px;">Leads traités</div>
+        <div style="font-size:24px;font-weight:800;color:#1a1a2e;">78</div>
+        <div style="font-size:10px;color:#9ca3af;">sur 92 générés</div>
+      </div>
+      <div style="text-align:center;padding:12px;background:#f8faff;border-radius:8px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6b7280;margin-bottom:6px;">RDV obtenus</div>
+        <div style="font-size:24px;font-weight:800;color:#15803d;">12</div>
+        <div style="font-size:10px;color:#9ca3af;">taux 15,4 %</div>
+      </div>
+      <div style="text-align:center;padding:12px;background:#f8faff;border-radius:8px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6b7280;margin-bottom:6px;">Refus définitif</div>
+        <div style="font-size:24px;font-weight:800;color:#d97706;">14</div>
+        <div style="font-size:10px;color:#9ca3af;">17,9 % des leads</div>
+      </div>
+
+    </div>
   </div>
 </div>
 
 <!-- SOLAIRE -->
 <div class="section">
-  <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+  <div class="section-head">
     <span style="font-size:18px;">☀️</span>
     <div>
-      <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#22c55e;margin-bottom:2px;">Campagne active</div>
-      <div style="font-size:16px;font-weight:800;color:#1a1a2e;">Solaire</div>
+      <div class="section-tag">Campagne active</div>
+      <div class="section-title">Solaire</div>
     </div>
   </div>
-  <div class="table-wrap">
-    <table class="camp-table">
+  <div class="tbl-wrap">
+    <table class="tbl">
       <thead><tr><th>Période</th><th>Audience cible</th><th>Résultats</th><th>Nb de visuels actifs</th><th>Montant dépensé</th><th>Statut campagne</th><th>Statut formulaire</th></tr></thead>
       <tbody>
         <tr>
-          <td>01/05/26 → 31/05/26</td>
-          <td><strong>Nouveaux prospects</strong><small>Adultes 40-70 ans+ · Intérêt habitat & énergies renouvelables</small></td>
-          <td><strong style="font-size:16px;color:#15803d;font-weight:800;">373</strong><small>leads · CPL 41,23 €</small></td>
-          <td><strong>19 visuels actifs</strong><small>3 arrêtés (optimisation)</small></td>
-          <td><strong>15 378,26 €</strong></td>
-          <td><span class="badge b-live">🟢 En ligne</span></td>
-          <td><span class="form-ok">✅ Formulaire SMS OK</span></td>
+          <td>01/06/26 → 30/06/26</td>
+          <td><strong>Nouveaux prospects</strong><small>Adultes 40-70 ans+ · Habitat & solaire</small></td>
+          <td><span class="num-big num-green">348</span><small>leads · CPL 23,76 €</small></td>
+          <td><strong>24 visuels actifs</strong><small>5 arrêtés</small></td>
+          <td><strong>8 267,00 €</strong></td>
+          <td><span class="st st-live">En ligne</span></td>
+          <td><span class="fb fb-ok">SMS OK</span></td>
         </tr>
         <tr>
-          <td>01/05/26 → 31/05/26</td>
-          <td><strong>Nouveaux prospects</strong><small>Adultes 40-70 ans+ · Intérêt habitat & énergies renouvelables</small></td>
-          <td><strong style="font-size:16px;color:#15803d;font-weight:800;">72</strong><small>leads · CPL 107,78 €</small></td>
-          <td><strong>8 visuels actifs</strong><small>4 arrêtés (optimisation)</small></td>
-          <td><strong>7 760,39 €</strong></td>
-          <td><span class="badge b-live">🟢 En ligne</span></td>
-          <td><span class="form-lp">🔗 LP</span></td>
+          <td>01/06/26 → 30/06/26</td>
+          <td><strong>Nouveaux prospects</strong><small>Adultes 40-70 ans+ · Carport inclus</small></td>
+          <td><span class="num-big num-green">27</span><small>leads · CPL 133,90 €</small></td>
+          <td><strong>6 visuels actifs</strong><small>3 arrêtés</small></td>
+          <td><strong>3 615,22 €</strong></td>
+          <td><span class="st st-live">En ligne</span></td>
+          <td><span class="fb fb-lp">LP</span></td>
         </tr>
-        <tr onclick="toggleDemogSol()" id="row-demog-sol-trigger" style="cursor:pointer;background:#f0f9ff;border-top:1px solid #bfdbfe;">
-          <td colspan="7" style="padding:10px 16px;text-align:center;background:#f0f9ff;">
-            <span style="font-size:12px;font-weight:600;color:#1d4ed8;display:flex;align-items:center;justify-content:center;gap:8px;">
-              👥 Accéder aux données démographiques <span id="demog-sol-arrow">▼</span>
-            </span>
-          </td>
+        <tr class="acc-tr" onclick="toggleSol()">
+          <td colspan="7">Accéder aux données démographiques FL & LP <span id="sol-arr">▼</span></td>
         </tr>
-        <tr id="row-demog-sol" style="display:none;">
-          <td colspan="7" style="padding:0;background:#f8faff;">
-            <div style="padding:16px 20px;">
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
-                <!-- FL -->
+        <tr id="sol-demo" style="display:none;" class="acc-content">
+          <td colspan="7">
+            <div style="padding:20px 24px;background:#f8faff;">
+              <div class="sol-split">
                 <div>
-                  <div style="font-size:11px;font-weight:700;color:#f59e0b;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">Formulaire (FL) — 373 leads · CPL moy. 41,23 €</div>
-                  <div style="display:grid;grid-template-columns:180px 1fr;gap:12px;align-items:start;">
-                    <div style="display:flex;flex-direction:column;gap:5px;">
-                      <div style="background:#f8faff;border-radius:8px;padding:7px 11px;border-left:3px solid #0ea5e9;">
-                        <div style="font-size:10px;font-weight:700;color:#0ea5e9;">♂ Hommes</div>
-                        <div style="font-size:16px;font-weight:900;color:#1a1a2e;">286 <span style="font-size:10px;color:#6b7280;">leads</span></div>
-                        <div style="font-size:10px;color:#9ca3af;">77,7 %</div>
-                      </div>
-                      <div style="background:#f8faff;border-radius:8px;padding:7px 11px;border-left:3px solid #6366f1;">
-                        <div style="font-size:10px;font-weight:700;color:#6366f1;">♀ Femmes</div>
-                        <div style="font-size:16px;font-weight:900;color:#1a1a2e;">82 <span style="font-size:10px;color:#6b7280;">leads</span></div>
-                        <div style="font-size:10px;color:#9ca3af;">22,3 %</div>
-                      </div>
+                  <div class="sol-block-title" style="color:#1d4ed8;border-color:#1d4ed8;">Formulaire (FL) — 348 leads · CPL moy. 23,76 €</div>
+                  <div style="display:grid;grid-template-columns:160px 1fr;gap:16px;">
+                    <div>
+                      <div class="demo-label">Genre</div>
+                      <div class="gender-card"><div class="gender-name" style="color:#0ea5e9;">♂ Hommes</div><div class="gender-num">265</div><div class="gender-meta">77,9 % · CPL 23,46 €</div></div>
+                      <div class="gender-card"><div class="gender-name" style="color:#6366f1;">♀ Femmes</div><div class="gender-num">75</div><div class="gender-meta">22,1 % · CPL 25,70 €</div></div>
                     </div>
-                    <div style="display:flex;flex-direction:column;gap:4px;">
-                      <div style="display:grid;grid-template-columns:48px 1fr 80px 64px;align-items:center;gap:6px;">
-                        <div style="font-size:10px;font-weight:700;color:#374151;">65+</div>
-                        <div style="position:relative;height:20px;background:#f0f4ff;border-radius:4px;overflow:hidden;">
-                          <div style="position:absolute;left:0;top:0;height:100%;width:40.8%;background:linear-gradient(90deg,#f59e0b,#fbbf24);border-radius:4px;display:flex;align-items:center;padding-left:6px;">
-                            <span style="font-size:9px;font-weight:700;color:white;">150 · 40,8%</span>
-                          </div>
-                          <div style="position:absolute;right:4px;top:0;height:100%;display:flex;align-items:center;"><span style="font-size:9px;color:#6b7280;">♂123 ♀27</span></div>
-                        </div>
-                        <div style="font-size:10px;color:#6b7280;text-align:right;">CPL <strong style="color:#1a1a2e;">41,85 €</strong></div>
-                        <div style="font-size:10px;color:#9ca3af;text-align:right;">6 277 €</div>
-                      </div>
-                      <div style="display:grid;grid-template-columns:48px 1fr 80px 64px;align-items:center;gap:6px;">
-                        <div style="font-size:10px;font-weight:700;color:#374151;">55-64</div>
-                        <div style="position:relative;height:20px;background:#f0f4ff;border-radius:4px;overflow:hidden;">
-                          <div style="position:absolute;left:0;top:0;height:100%;width:29.3%;background:linear-gradient(90deg,#fbbf24,#fcd34d);border-radius:4px;display:flex;align-items:center;padding-left:6px;">
-                            <span style="font-size:9px;font-weight:700;color:white;">108 · 29,3%</span>
-                          </div>
-                          <div style="position:absolute;right:4px;top:0;height:100%;display:flex;align-items:center;"><span style="font-size:9px;color:#6b7280;">♂84 ♀24</span></div>
-                        </div>
-                        <div style="font-size:10px;color:#6b7280;text-align:right;">CPL <strong style="color:#1a1a2e;">38,30 €</strong></div>
-                        <div style="font-size:10px;color:#9ca3af;text-align:right;">4 136 €</div>
-                      </div>
-                      <div style="display:grid;grid-template-columns:48px 1fr 80px 64px;align-items:center;gap:6px;">
-                        <div style="font-size:10px;font-weight:700;color:#374151;">45-54</div>
-                        <div style="position:relative;height:20px;background:#f0f4ff;border-radius:4px;overflow:hidden;">
-                          <div style="position:absolute;left:0;top:0;height:100%;width:15.5%;background:#fcd34d;border-radius:4px;"></div>
-                          <div style="position:absolute;left:6px;top:0;height:100%;display:flex;align-items:center;"><span style="font-size:9px;font-weight:600;color:#374151;">57 · 15,5%</span></div>
-                          <div style="position:absolute;right:4px;top:0;height:100%;display:flex;align-items:center;"><span style="font-size:9px;color:#6b7280;">♂40 ♀17</span></div>
-                        </div>
-                        <div style="font-size:10px;color:#6b7280;text-align:right;">CPL <strong style="color:#1a1a2e;">48,04 €</strong></div>
-                        <div style="font-size:10px;color:#9ca3af;text-align:right;">2 739 €</div>
-                      </div>
-                      <div style="display:grid;grid-template-columns:48px 1fr 80px 64px;align-items:center;gap:6px;">
-                        <div style="font-size:10px;font-weight:700;color:#374151;">35-44</div>
-                        <div style="position:relative;height:20px;background:#f0f4ff;border-radius:4px;overflow:hidden;">
-                          <div style="position:absolute;left:0;top:0;height:100%;width:9.8%;background:#fde68a;border-radius:4px;"></div>
-                          <div style="position:absolute;left:6px;top:0;height:100%;display:flex;align-items:center;"><span style="font-size:9px;font-weight:600;color:#374151;">36 · 9,8%</span></div>
-                          <div style="position:absolute;right:4px;top:0;height:100%;display:flex;align-items:center;"><span style="font-size:9px;color:#6b7280;">♂25 ♀11</span></div>
-                        </div>
-                        <div style="font-size:10px;color:#6b7280;text-align:right;">CPL <strong style="color:#1a1a2e;">38,58 €</strong></div>
-                        <div style="font-size:10px;color:#9ca3af;text-align:right;">1 389 €</div>
-                      </div>
-                      <div style="display:grid;grid-template-columns:48px 1fr 80px 64px;align-items:center;gap:6px;">
-                        <div style="font-size:10px;font-weight:700;color:#374151;">25-34</div>
-                        <div style="position:relative;height:20px;background:#f0f4ff;border-radius:4px;overflow:hidden;">
-                          <div style="position:absolute;left:0;top:0;height:100%;width:3.8%;background:#fef3c7;border-radius:4px;"></div>
-                          <div style="position:absolute;left:6px;top:0;height:100%;display:flex;align-items:center;"><span style="font-size:9px;font-weight:600;color:#374151;">14 · 3,8%</span></div>
-                          <div style="position:absolute;right:4px;top:0;height:100%;display:flex;align-items:center;"><span style="font-size:9px;color:#6b7280;">♂11 ♀3</span></div>
-                        </div>
-                        <div style="font-size:10px;color:#6b7280;text-align:right;">CPL <strong style="color:#1a1a2e;">41,29 €</strong></div>
-                        <div style="font-size:10px;color:#9ca3af;text-align:right;">578 €</div>
-                      </div>
-                      <div style="display:grid;grid-template-columns:48px 1fr 80px 64px;align-items:center;gap:6px;">
-                        <div style="font-size:10px;font-weight:700;color:#374151;">18-24</div>
-                        <div style="position:relative;height:20px;background:#f0f4ff;border-radius:4px;overflow:hidden;">
-                          <div style="position:absolute;left:0;top:0;height:100%;width:0.8%;background:#fef9c3;border-radius:4px;"></div>
-                          <div style="position:absolute;left:6px;top:0;height:100%;display:flex;align-items:center;"><span style="font-size:9px;font-weight:600;color:#374151;">3 · 0,8%</span></div>
-                          <div style="position:absolute;right:4px;top:0;height:100%;display:flex;align-items:center;"><span style="font-size:9px;color:#6b7280;">♂3 ♀0</span></div>
-                        </div>
-                        <div style="font-size:10px;color:#6b7280;text-align:right;">CPL <strong style="color:#1a1a2e;">33,28 €</strong></div>
-                        <div style="font-size:10px;color:#9ca3af;text-align:right;">100 €</div>
-                      </div>
+                    <div>
+                      <div class="demo-label">Par tranche d'âge</div>
+                      <div class="bar-r"><div class="bar-age">55-64</div><div class="bar-t"><div class="bar-f" style="width:31.5%;background:#1a1a2e;"><span>107 · 31,5%</span></div><div class="bar-of"><span>♂88 ♀19</span></div></div><div class="bar-cpl">CPL <strong>23,05 €</strong></div><div class="bar-amt">2 467 €</div></div>
+                      <div class="bar-r"><div class="bar-age">65+</div><div class="bar-t"><div class="bar-f" style="width:28.2%;background:#1d4ed8;"><span>96 · 28,2%</span></div><div class="bar-of"><span>♂79 ♀17</span></div></div><div class="bar-cpl">CPL <strong>27,78 €</strong></div><div class="bar-amt">2 667 €</div></div>
+                      <div class="bar-r"><div class="bar-age">45-54</div><div class="bar-t"><div class="bar-f" style="width:25%;background:#3b82f6;"></div><div class="bar-of2"><span>85 · 25,0%</span></div><div class="bar-of"><span>♂62 ♀23</span></div></div><div class="bar-cpl">CPL <strong>20,47 €</strong></div><div class="bar-amt">1 740 €</div></div>
+                      <div class="bar-r"><div class="bar-age">35-44</div><div class="bar-t"><div class="bar-f" style="width:11.2%;background:#60a5fa;"></div><div class="bar-of2"><span>38 · 11,2%</span></div><div class="bar-of"><span>♂26 ♀12</span></div></div><div class="bar-cpl">CPL <strong>23,65 €</strong></div><div class="bar-amt">899 €</div></div>
+                      <div class="bar-r"><div class="bar-age">25-34</div><div class="bar-t"><div class="bar-f" style="width:3.5%;background:#93c5fd;"></div><div class="bar-of2"><span>12 · 3,5%</span></div><div class="bar-of"><span>♂9 ♀3</span></div></div><div class="bar-cpl">CPL <strong>24,47 €</strong></div><div class="bar-amt">294 €</div></div>
+                      <div class="unk-row"><span>Inconnu (FL)</span><strong>8 leads · 122,42 € · inclus dans le total</strong></div>
                     </div>
                   </div>
                 </div>
-                <!-- LP -->
                 <div>
-                  <div style="font-size:11px;font-weight:700;color:#6366f1;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">Landing Page (LP) — 72 leads · CPL moy. 107,78 €</div>
-                  <div style="display:grid;grid-template-columns:180px 1fr;gap:12px;align-items:start;">
-                    <div style="display:flex;flex-direction:column;gap:5px;">
-                      <div style="background:#f8faff;border-radius:8px;padding:7px 11px;border-left:3px solid #0ea5e9;">
-                        <div style="font-size:10px;font-weight:700;color:#0ea5e9;">♂ Hommes</div>
-                        <div style="font-size:16px;font-weight:900;color:#1a1a2e;">56 <span style="font-size:10px;color:#6b7280;">leads</span></div>
-                        <div style="font-size:10px;color:#9ca3af;">77,8 %</div>
-                      </div>
-                      <div style="background:#f8faff;border-radius:8px;padding:7px 11px;border-left:3px solid #6366f1;">
-                        <div style="font-size:10px;font-weight:700;color:#6366f1;">♀ Femmes</div>
-                        <div style="font-size:16px;font-weight:900;color:#1a1a2e;">16 <span style="font-size:10px;color:#6b7280;">leads</span></div>
-                        <div style="font-size:10px;color:#9ca3af;">22,2 %</div>
-                      </div>
+                  <div class="sol-block-title" style="color:#1a1a2e;border-color:#1a1a2e;">Landing Page (LP) — 27 leads · CPL moy. 133,90 €</div>
+                  <div style="display:grid;grid-template-columns:160px 1fr;gap:16px;">
+                    <div>
+                      <div class="demo-label">Genre</div>
+                      <div class="gender-card"><div class="gender-name" style="color:#0ea5e9;">♂ Hommes</div><div class="gender-num">24</div><div class="gender-meta">88,9 % · CPL 115,72 €</div></div>
+                      <div class="gender-card"><div class="gender-name" style="color:#6366f1;">♀ Femmes</div><div class="gender-num">3</div><div class="gender-meta">11,1 % · CPL 260,66 €</div></div>
                     </div>
-                    <div style="display:flex;flex-direction:column;gap:4px;">
-                      <div style="display:grid;grid-template-columns:48px 1fr 80px 64px;align-items:center;gap:6px;">
-                        <div style="font-size:10px;font-weight:700;color:#374151;">55-64</div>
-                        <div style="position:relative;height:20px;background:#f0f4ff;border-radius:4px;overflow:hidden;">
-                          <div style="position:absolute;left:0;top:0;height:100%;width:36.1%;background:linear-gradient(90deg,#6366f1,#818cf8);border-radius:4px;display:flex;align-items:center;padding-left:6px;">
-                            <span style="font-size:9px;font-weight:700;color:white;">26 · 36,1%</span>
-                          </div>
-                          <div style="position:absolute;right:4px;top:0;height:100%;display:flex;align-items:center;"><span style="font-size:9px;color:#6b7280;">♂25 ♀1</span></div>
-                        </div>
-                        <div style="font-size:10px;color:#6b7280;text-align:right;">CPL <strong style="color:#1a1a2e;">73,19 €</strong></div>
-                        <div style="font-size:10px;color:#9ca3af;text-align:right;">1 903 €</div>
-                      </div>
-                      <div style="display:grid;grid-template-columns:48px 1fr 80px 64px;align-items:center;gap:6px;">
-                        <div style="font-size:10px;font-weight:700;color:#374151;">35-44</div>
-                        <div style="position:relative;height:20px;background:#f0f4ff;border-radius:4px;overflow:hidden;">
-                          <div style="position:absolute;left:0;top:0;height:100%;width:22.2%;background:linear-gradient(90deg,#818cf8,#a5b4fc);border-radius:4px;display:flex;align-items:center;padding-left:6px;">
-                            <span style="font-size:9px;font-weight:700;color:white;">16 · 22,2%</span>
-                          </div>
-                          <div style="position:absolute;right:4px;top:0;height:100%;display:flex;align-items:center;"><span style="font-size:9px;color:#6b7280;">♂8 ♀8</span></div>
-                        </div>
-                        <div style="font-size:10px;color:#6b7280;text-align:right;">CPL <strong style="color:#1a1a2e;">79,97 €</strong></div>
-                        <div style="font-size:10px;color:#9ca3af;text-align:right;">1 280 €</div>
-                      </div>
-                      <div style="display:grid;grid-template-columns:48px 1fr 80px 64px;align-items:center;gap:6px;">
-                        <div style="font-size:10px;font-weight:700;color:#374151;">45-54</div>
-                        <div style="position:relative;height:20px;background:#f0f4ff;border-radius:4px;overflow:hidden;">
-                          <div style="position:absolute;left:0;top:0;height:100%;width:19.4%;background:#a5b4fc;border-radius:4px;"></div>
-                          <div style="position:absolute;left:6px;top:0;height:100%;display:flex;align-items:center;"><span style="font-size:9px;font-weight:600;color:#374151;">14 · 19,4%</span></div>
-                          <div style="position:absolute;right:4px;top:0;height:100%;display:flex;align-items:center;"><span style="font-size:9px;color:#6b7280;">♂11 ♀3</span></div>
-                        </div>
-                        <div style="font-size:10px;color:#6b7280;text-align:right;">CPL <strong style="color:#1a1a2e;">137,47 €</strong></div>
-                        <div style="font-size:10px;color:#9ca3af;text-align:right;">1 925 €</div>
-                      </div>
-                      <div style="display:grid;grid-template-columns:48px 1fr 80px 64px;align-items:center;gap:6px;">
-                        <div style="font-size:10px;font-weight:700;color:#374151;">65+</div>
-                        <div style="position:relative;height:20px;background:#f0f4ff;border-radius:4px;overflow:hidden;">
-                          <div style="position:absolute;left:0;top:0;height:100%;width:11.1%;background:#c7d2fe;border-radius:4px;"></div>
-                          <div style="position:absolute;left:6px;top:0;height:100%;display:flex;align-items:center;"><span style="font-size:9px;font-weight:600;color:#374151;">8 · 11,1%</span></div>
-                          <div style="position:absolute;right:4px;top:0;height:100%;display:flex;align-items:center;"><span style="font-size:9px;color:#6b7280;">♂7 ♀1</span></div>
-                        </div>
-                        <div style="font-size:10px;color:#6b7280;text-align:right;">CPL <strong style="color:#1a1a2e;">209,53 €</strong></div>
-                        <div style="font-size:10px;color:#9ca3af;text-align:right;">1 676 €</div>
-                      </div>
-                      <div style="display:grid;grid-template-columns:48px 1fr 80px 64px;align-items:center;gap:6px;">
-                        <div style="font-size:10px;font-weight:700;color:#374151;">25-34</div>
-                        <div style="position:relative;height:20px;background:#f0f4ff;border-radius:4px;overflow:hidden;">
-                          <div style="position:absolute;left:0;top:0;height:100%;width:5.6%;background:#e0e7ff;border-radius:4px;"></div>
-                          <div style="position:absolute;left:6px;top:0;height:100%;display:flex;align-items:center;"><span style="font-size:9px;font-weight:600;color:#374151;">4 · 5,6%</span></div>
-                          <div style="position:absolute;right:4px;top:0;height:100%;display:flex;align-items:center;"><span style="font-size:9px;color:#6b7280;">♂3 ♀1</span></div>
-                        </div>
-                        <div style="font-size:10px;color:#6b7280;text-align:right;">CPL <strong style="color:#1a1a2e;">163,00 €</strong></div>
-                        <div style="font-size:10px;color:#9ca3af;text-align:right;">652 €</div>
-                      </div>
-                      <div style="display:grid;grid-template-columns:48px 1fr 80px 64px;align-items:center;gap:6px;">
-                        <div style="font-size:10px;font-weight:700;color:#374151;">18-24</div>
-                        <div style="position:relative;height:20px;background:#f0f4ff;border-radius:4px;overflow:hidden;">
-                          <div style="position:absolute;left:0;top:0;height:100%;width:5.6%;background:#ede9fe;border-radius:4px;"></div>
-                          <div style="position:absolute;left:6px;top:0;height:100%;display:flex;align-items:center;"><span style="font-size:9px;font-weight:600;color:#374151;">4 · 5,6%</span></div>
-                          <div style="position:absolute;right:4px;top:0;height:100%;display:flex;align-items:center;"><span style="font-size:9px;color:#6b7280;">♂2 ♀2</span></div>
-                        </div>
-                        <div style="font-size:10px;color:#6b7280;text-align:right;">CPL <strong style="color:#1a1a2e;">57,14 €</strong></div>
-                        <div style="font-size:10px;color:#9ca3af;text-align:right;">229 €</div>
-                      </div>
+                    <div>
+                      <div class="demo-label">Par tranche d'âge</div>
+                      <div class="bar-r"><div class="bar-age">55-64</div><div class="bar-t"><div class="bar-f" style="width:33.3%;background:#1a1a2e;"><span>9 · 33,3%</span></div><div class="bar-of"><span>♂9 ♀0</span></div></div><div class="bar-cpl">CPL <strong>99,05 €</strong></div><div class="bar-amt">891 €</div></div>
+                      <div class="bar-r"><div class="bar-age">35-44</div><div class="bar-t"><div class="bar-f" style="width:25.9%;background:#1d4ed8;"><span>7 · 25,9%</span></div><div class="bar-of"><span>♂6 ♀1</span></div></div><div class="bar-cpl">CPL <strong>79,27 €</strong></div><div class="bar-amt">555 €</div></div>
+                      <div class="bar-r"><div class="bar-age">45-54</div><div class="bar-t"><div class="bar-f" style="width:18.5%;background:#3b82f6;"></div><div class="bar-of2"><span>5 · 18,5%</span></div><div class="bar-of"><span>♂3 ♀2</span></div></div><div class="bar-cpl">CPL <strong>186,72 €</strong></div><div class="bar-amt">934 €</div></div>
+                      <div class="bar-r"><div class="bar-age">65+</div><div class="bar-t"><div class="bar-f" style="width:14.8%;background:#60a5fa;"></div><div class="bar-of2"><span>4 · 14,8%</span></div><div class="bar-of"><span>♂4 ♀0</span></div></div><div class="bar-cpl">CPL <strong>215,46 €</strong></div><div class="bar-amt">862 €</div></div>
+                      <div class="bar-r"><div class="bar-age">25-34</div><div class="bar-t"><div class="bar-f" style="width:7.4%;background:#93c5fd;"></div><div class="bar-of2"><span>2 · 7,4%</span></div><div class="bar-of"><span>♂2 ♀0</span></div></div><div class="bar-cpl">CPL <strong>125,03 €</strong></div><div class="bar-amt">250 €</div></div>
+                      <div class="unk-row"><span>Inconnu (LP)</span><strong>0 lead · 55,91 € · inclus dans le total</strong></div>
                     </div>
                   </div>
                 </div>
               </div>
-              <!-- Inconnus -->
-              <div style="margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-                <div style="background:#f9fafb;border:1px dashed #d1d5db;border-radius:8px;padding:8px 12px;display:flex;align-items:center;justify-content:space-between;">
-                  <span style="font-size:10px;color:#9ca3af;">⚠️ Genre inconnu (FL)</span>
-                  <span style="font-size:10px;color:#6b7280;font-weight:600;">5 leads · 159,35 € · inclus dans le total (373 leads)</span>
-                </div>
-                <div style="background:#f9fafb;border:1px dashed #d1d5db;border-radius:8px;padding:8px 12px;display:flex;align-items:center;justify-content:space-between;">
-                  <span style="font-size:10px;color:#9ca3af;">⚠️ Genre inconnu (LP)</span>
-                  <span style="font-size:10px;color:#6b7280;font-weight:600;">0 leads · 96,48 € · inclus dans le total (72 leads)</span>
-                </div>
-              </div>
-              <div style="margin-top:8px;font-size:10px;color:#9ca3af;">Les totaux du tableau (373 FL · 72 LP) incluent les genres inconnus ci-dessus. Les CPL LP sont significativement plus élevés → profils d'audience différents selon le type de conversion.</div>
+              <div style="margin-top:8px;font-size:10px;color:#9ca3af;">Les totaux du tableau (348 FL · 27 LP) incluent les genres inconnus ci-dessus.</div>
             </div>
           </td>
         </tr>
-        <tr class="budget-row">
-          <td colspan="2">💰 Total Solaire</td>
-          <td><strong style="color:#15803d;">445 leads</strong><small>CPL moy. 51,99 €</small></td>
+        <tr class="tbl-total">
+          <td colspan="2">Total Solaire</td>
+          <td><strong style="color:#15803d;">375 leads</strong><small style="color:#1d4ed8;">CPL moy. 31,67 €</small></td>
           <td></td>
-          <td><strong>23 138,65 €</strong></td>
+          <td><strong>11 882,22 €</strong></td>
           <td colspan="2"></td>
         </tr>
       </tbody>
     </table>
   </div>
-</div>
 
-<!-- SALON MONTPELLIER -->
-<div class="section">
-  <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
-    <span style="font-size:18px;">📍</span>
-    <div>
-      <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#22c55e;margin-bottom:2px;">Événement</div>
-      <div style="font-size:16px;font-weight:800;color:#1a1a2e;">Salon — Montpellier</div>
+  <!-- RDV SOLAIRE -->
+  <div style="margin-top:10px;background:white;border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.07);">
+    <div style="background:#f8faff;border-bottom:1px solid #e5e7eb;padding:12px 20px;display:flex;align-items:center;gap:8px;">
+      <span style="font-size:13px;"></span>
+      <span style="font-size:13px;font-weight:700;color:#1a1a2e;">Taux de transformation en RDV</span>
+      <span style="font-size:11px;color:#9ca3af;margin-left:4px;">Source CRM · Formulaire (FB-F)</span>
+    </div>
+    <div style="padding:16px 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+      <div style="text-align:center;padding:12px;background:#f8faff;border-radius:8px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6b7280;margin-bottom:6px;">Leads traités</div>
+        <div style="font-size:24px;font-weight:800;color:#1a1a2e;">306</div>
+        <div style="font-size:10px;color:#9ca3af;">sur 375 générés</div>
+      </div>
+      <div style="text-align:center;padding:12px;background:#f8faff;border-radius:8px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6b7280;margin-bottom:6px;">RDV obtenus</div>
+        <div style="font-size:24px;font-weight:800;color:#15803d;">106</div>
+        <div style="font-size:10px;color:#9ca3af;">taux 34,6 %</div>
+      </div>
+      <div style="text-align:center;padding:12px;background:#f8faff;border-radius:8px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6b7280;margin-bottom:6px;">Refus définitif</div>
+        <div style="font-size:24px;font-weight:800;color:#d97706;">85</div>
+        <div style="font-size:10px;color:#9ca3af;">27,8 % des leads</div>
+      </div>
+
     </div>
   </div>
-  <div class="table-wrap">
-    <table class="camp-table">
-      <thead><tr><th>Événement</th><th>Période</th><th>Résultats</th><th>Impressions</th><th>Couverture</th><th>Clics</th><th>Montant dépensé</th><th>Statut</th></tr></thead>
+</div>
+
+
+<div class="section" style="margin-top:28px;">
+  <div class="section-head">
+    <span style="font-size:18px;">📈</span>
+    <div>
+      <div class="section-tag">CRM</div>
+      <div class="section-title">Évolution des RDV obtenus <span style="font-size:12px;color:#6b7280;font-weight:400;">— Avril → Juin 2026</span></div>
+    </div>
+  </div>
+  <div style="background:white;border-radius:12px;padding:24px 28px;box-shadow:0 1px 4px rgba(0,0,0,0.07);">
+    <div style="display:flex;gap:24px;margin-bottom:20px;font-size:12px;">
+      <span style="display:flex;align-items:center;gap:8px;">
+        <svg width="28" height="10"><line x1="0" y1="5" x2="28" y2="5" stroke="#1d4ed8" stroke-width="2"/><circle cx="14" cy="5" r="4" fill="#1d4ed8" stroke="#fff" stroke-width="2"/></svg>
+        <span style="color:#374151;font-weight:500;">Bilan Thermique</span>
+      </span>
+      <span style="display:flex;align-items:center;gap:8px;">
+        <svg width="28" height="10"><line x1="0" y1="5" x2="28" y2="5" stroke="#15803d" stroke-width="2"/><circle cx="14" cy="5" r="4" fill="#15803d" stroke="#fff" stroke-width="2"/></svg>
+        <span style="color:#374151;font-weight:500;">Solaire</span>
+      </span>
+    </div>
+    <div style="position:relative;width:100%;height:280px;">
+      <canvas id="rdvLine"></canvas>
+    </div>
+    <div style="margin-top:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:center;border-top:1px solid #f0f0f5;padding-top:16px;">
+      <div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6b7280;margin-bottom:4px;">Avril</div>
+        <div style="font-size:13px;font-weight:700;color:#1d4ed8;">40 BT</div>
+        <div style="font-size:13px;font-weight:700;color:#15803d;">69 Solaire</div>
+        <div style="font-size:11px;color:#9ca3af;margin-top:2px;">109 total</div>
+      </div>
+      <div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6b7280;margin-bottom:4px;">Mai</div>
+        <div style="font-size:13px;font-weight:700;color:#1d4ed8;">26 BT</div>
+        <div style="font-size:13px;font-weight:700;color:#15803d;">69 Solaire</div>
+        <div style="font-size:11px;color:#9ca3af;margin-top:2px;">95 total</div>
+      </div>
+      <div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6b7280;margin-bottom:4px;">Juin</div>
+        <div style="font-size:13px;font-weight:700;color:#1d4ed8;">12 BT</div>
+        <div style="font-size:13px;font-weight:700;color:#15803d;">106 Solaire</div>
+        <div style="font-size:11px;color:#9ca3af;margin-top:2px;">118 total</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+new Chart(document.getElementById('rdvLine'), {
+  type: 'line',
+  data: {
+    labels: ['Avril 2026', 'Mai 2026', 'Juin 2026'],
+    datasets: [
+      {
+        label: 'Bilan Thermique',
+        data: [40, 26, 12],
+        borderColor: '#1d4ed8',
+        backgroundColor: 'rgba(29,78,216,0.06)',
+        borderWidth: 2,
+        pointBackgroundColor: '#1d4ed8',
+        pointBorderColor: '#fff',
+        pointBorderWidth: 2,
+        pointRadius: 6,
+        pointHoverRadius: 8,
+        tension: 0.3,
+        fill: true
+      },
+      {
+        label: 'Solaire',
+        data: [69, 69, 106],
+        borderColor: '#15803d',
+        backgroundColor: 'rgba(21,128,61,0.06)',
+        borderWidth: 2,
+        pointBackgroundColor: '#15803d',
+        pointBorderColor: '#fff',
+        pointBorderWidth: 2,
+        pointRadius: 6,
+        pointHoverRadius: 8,
+        tension: 0.3,
+        fill: true
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#1a1a2e',
+        padding: 10,
+        callbacks: {
+          label: ctx => `  ${ctx.dataset.label} : ${ctx.parsed.y} RDV`
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { display: false },
+        ticks: { color: '#6b7280', font: { size: 12 } },
+        border: { color: '#e5e7eb' }
+      },
+      y: {
+        beginAtZero: true,
+        max: 120,
+        grid: { color: '#f0f0f0' },
+        ticks: { color: '#6b7280', font: { size: 12 }, stepSize: 20 },
+        border: { display: false }
+      }
+    }
+  }
+});
+</script>
+<!-- SALON LE PUY -->
+<div class="section">
+  <div class="section-head">
+    <span style="font-size:18px;">📍</span>
+    <div>
+      <div class="section-tag" style="color:#f59e0b;">Événements</div>
+      <div class="section-title">Agences Locales — Salons Juin</div>
+    </div>
+  </div>
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Événement</th><th>Période</th><th>Résultats</th><th class="r">Impressions</th><th class="r">Couverture</th><th class="r">Clics</th><th class="r">Montant dépensé</th><th>Statut</th></tr></thead>
       <tbody>
         <tr>
-          <td><strong>Salon Innov Habitat — Grau du Roi</strong></td>
-          <td>01/05 → 03/05/26</td>
-          <td><strong style="font-size:16px;color:#15803d;font-weight:800;">93</strong><small>engagements</small></td>
-          <td><strong>15 554</strong></td>
-          <td><strong>11 769</strong></td>
-          <td><strong>25</strong></td>
-          <td><strong>56,23 €</strong></td>
-          <td><span class="badge b-done">✔️ Terminé</span></td>
+          <td><strong>Foire du Aumont Aubrac</strong><small>Le Puy</small></td>
+          <td>12/06 → 14/06/26</td>
+          <td><span class="num-big num-green">242</span><small>engagements</small></td>
+          <td class="r"><strong>30 972</strong></td>
+          <td class="r"><strong>23 278</strong></td>
+          <td class="r"><strong>54</strong></td>
+          <td class="r"><strong>99,89 €</strong></td>
+          <td><span class="st st-done">Terminé</span></td>
         </tr>
-        <tr class="budget-row">
-          <td colspan="6">💰 Total Salons</td>
-          <td><strong>56,23 €</strong></td>
+        <tr>
+          <td><strong>Salon des Maires — Saint-Paulien</strong><small>Le Puy</small></td>
+          <td>19/06/26</td>
+          <td><span class="num-big num-green">175</span><small>engagements</small></td>
+          <td class="r"><strong>25 914</strong></td>
+          <td class="r"><strong>18 656</strong></td>
+          <td class="r"><strong>53</strong></td>
+          <td class="r"><strong>99,98 €</strong></td>
+          <td><span class="st st-done">Terminé</span></td>
+        </tr>
+        <tr class="tbl-total">
+          <td colspan="6">Total Salons Le Puy</td>
+          <td class="r"><strong>199,87 €</strong></td>
           <td></td>
         </tr>
       </tbody>
@@ -479,282 +556,163 @@
 </div>
 
 <!-- VIDEO FACTORY -->
-<div class="section" style="margin-top:28px;">
-  <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+<div class="section">
+  <div class="section-head">
     <span style="font-size:18px;">🎬</span>
     <div>
-      <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#22c55e;margin-bottom:2px;">Campagne active</div>
-      <div style="font-size:16px;font-weight:800;color:#1a1a2e;">Vidéo Factory</div>
-      <div style="font-size:12px;color:#6b7280;margin-top:4px;">🎯 Objectif : <strong>notoriété & engagement</strong> · Optimisé pour les interactions</div>
+      <div class="section-tag">Campagne active</div>
+      <div class="section-title">Vidéo Factory <span style="font-size:12px;color:#6b7280;font-weight:400;">— Notoriété & engagement</span></div>
     </div>
   </div>
-  <div class="table-wrap">
-    <table class="camp-table">
-      <thead><tr><th>Vidéo</th><th>Plateforme</th><th>Période de diffusion</th><th>Montant dépensé</th><th>Statut campagne</th><th>Statut formulaire</th></tr></thead>
+
+  <div class="vf-stats">
+    <div class="vf-stat"><div class="vf-stat-label">Engagements</div><div class="vf-stat-value">7 266</div><div class="vf-stat-sub">interactions totales</div></div>
+    <div class="vf-stat"><div class="vf-stat-label">CPE moyen</div><div class="vf-stat-value">0,13 €</div><div class="vf-stat-sub">par interaction</div></div>
+    <div class="vf-stat"><div class="vf-stat-label">Dépenses totales</div><div class="vf-stat-value blue">928,34 €</div><div class="vf-stat-sub">ce mois</div></div>
+    <div class="vf-stat"><div class="vf-stat-label">Impressions</div><div class="vf-stat-value">172 424</div></div>
+    <div class="vf-stat"><div class="vf-stat-label">Couverture</div><div class="vf-stat-value">116 054</div><div class="vf-stat-sub">personnes atteintes</div></div>
+    <div class="vf-stat"><div class="vf-stat-label">Taux d'engagement</div><div class="vf-stat-value green">6,26 %</div><div class="vf-stat-sub">eng. / couverture</div></div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead>
+        <tr>
+          <th>Vidéo</th>
+          <th class="r">Dépensé</th>
+          <th class="r">Engagements</th>
+          <th class="r">CPE</th>
+          <th class="r">Impressions</th>
+          <th class="r">Vues 3s</th>
+          <th class="c">25%</th>
+          <th class="c">50%</th>
+          <th class="c">75%</th>
+          <th class="c">100%</th>
+          <th class="c">Hook Rate</th>
+        </tr>
+      </thead>
       <tbody>
         <tr>
-          <td>Visite Agence Orléans</td>
-          <td>Facebook + Instagram</td>
-          <td>30/04 → 10/05/26</td>
-          <td>239,36 €</td>
-          <td><span class="badge b-done">✔️ Terminée</span></td>
-          <td><span class="form-no">— Sans formulaire</span></td>
+          <td><strong>Agence Luttre</strong><small>12/06 → 21/06</small></td>
+          <td class="r">249,21 €</td>
+          <td class="r"><strong>2 520</strong></td>
+          <td class="r" style="color:#15803d;font-weight:700;">0,10 €</td>
+          <td class="r dim">38 930</td>
+          <td class="r">6 054</td>
+          <td class="c dim">1 063</td><td class="c dim">330</td><td class="c dim">206</td><td class="c dim">113</td>
+          <td class="c"><span class="hook hook-g">15,6 %</span></td>
         </tr>
         <tr>
-          <td>Pourquoi choisir Aterno</td>
-          <td>Facebook + Instagram</td>
-          <td>23/04 → 08/05/26</td>
-          <td>229,67 €</td>
-          <td><span class="badge b-done">✔️ Terminée</span></td>
-          <td><span class="form-no">— Sans formulaire</span></td>
+          <td><strong>Installation Luttre</strong><small>18/06 → 28/06</small></td>
+          <td class="r">249,89 €</td>
+          <td class="r"><strong>2 221</strong></td>
+          <td class="r">0,11 €</td>
+          <td class="r dim">31 180</td>
+          <td class="r">4 067</td>
+          <td class="c dim">1 029</td><td class="c dim">327</td><td class="c dim">204</td><td class="c dim">88</td>
+          <td class="c"><span class="hook hook-g">13,0 %</span></td>
         </tr>
         <tr>
-          <td>Visite Cliente Annecy</td>
-          <td>Facebook + Instagram</td>
-          <td>07/05 → 17/05/26</td>
-          <td>249,91 €</td>
-          <td><span class="badge b-done">✔️ Terminée</span></td>
-          <td><span class="form-no">— Sans formulaire</span></td>
+          <td><strong>Simulateur Solaire</strong><small>05/06 → 14/06</small></td>
+          <td class="r">249,87 €</td>
+          <td class="r"><strong>1 309</strong></td>
+          <td class="r">0,19 €</td>
+          <td class="r dim">46 382</td>
+          <td class="r">2 529</td>
+          <td class="c dim">1 831</td><td class="c dim">807</td><td class="c dim">537</td><td class="c dim">391</td>
+          <td class="c"><span class="hook hook-m">5,5 %</span></td>
         </tr>
         <tr>
-          <td>Aterno Corporate Orléans</td>
-          <td>Facebook + Instagram</td>
-          <td>12/05 → 20/05/26</td>
-          <td>249,88 €</td>
-          <td><span class="badge b-done">✔️ Terminée</span></td>
-          <td><span class="form-no">— Sans formulaire</span></td>
+          <td><strong>Prix Augmente</strong><small>29/05 → 07/06</small></td>
+          <td class="r">179,37 €</td>
+          <td class="r"><strong>1 216</strong></td>
+          <td class="r">0,15 €</td>
+          <td class="r dim">55 932</td>
+          <td class="r">1 884</td>
+          <td class="c dim">1 177</td><td class="c dim">521</td><td class="c dim">315</td><td class="c dim">136</td>
+          <td class="c"><span class="hook hook-b">3,4 %</span></td>
         </tr>
-        <tr>
-          <td>FB - Client Luttre</td>
-          <td>Facebook + Instagram</td>
-          <td>22/05 → 31/05/26</td>
-          <td>249,54 €</td>
-          <td><span class="badge b-done">✔️ Terminée</span></td>
-          <td><span class="form-no">— Sans formulaire</span></td>
-        </tr>
-        <tr>
-          <td>Prix Augmente</td>
-          <td>Facebook + Instagram</td>
-          <td>29/05 → 07/06/26</td>
-          <td>70,63 €</td>
-          <td><span class="badge b-live">🟢 En ligne</span></td>
-          <td><span class="form-no">— Sans formulaire</span></td>
-        </tr>
-        <tr class="budget-row">
-          <td colspan="3">💰 Total Vidéo Factory (mensuel)</td>
-          <td><strong>1 288,99 €</strong></td>
-          <td colspan="2"></td>
-        </tr>
-        <tr style="background:#f0f9ff;border-top:2px solid #bfdbfe;">
-          <td colspan="6" style="padding:16px 20px;">
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
-              <div style="background:white;border-radius:10px;padding:14px 16px;box-shadow:0 1px 4px rgba(0,0,0,0.07);text-align:center;">
-                <div style="font-size:11px;color:#6b7280;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">Engagements</div>
-                <div style="font-size:22px;font-weight:900;color:#1a1a2e;">9 857</div>
-                <div style="font-size:11px;color:#9ca3af;">interactions totales</div>
-              </div>
-              <div style="background:white;border-radius:10px;padding:14px 16px;box-shadow:0 1px 4px rgba(0,0,0,0.07);text-align:center;">
-                <div style="font-size:11px;color:#6b7280;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">Coût par engagement</div>
-                <div style="font-size:22px;font-weight:900;color:#1a1a2e;">0,13 €</div>
-                <div style="font-size:11px;color:#9ca3af;">par interaction</div>
-              </div>
-              <div style="background:white;border-radius:10px;padding:14px 16px;box-shadow:0 1px 4px rgba(0,0,0,0.07);text-align:center;">
-                <div style="font-size:11px;color:#6b7280;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">Dépenses totales</div>
-                <div style="font-size:22px;font-weight:900;color:#1d4ed8;">1 288,99 €</div>
-                <div style="font-size:11px;color:#9ca3af;">dépenses mensuelles</div>
-              </div>
-              <div style="background:white;border-radius:10px;padding:14px 16px;box-shadow:0 1px 4px rgba(0,0,0,0.07);text-align:center;">
-                <div style="font-size:11px;color:#6b7280;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">Impressions</div>
-                <div style="font-size:22px;font-weight:900;color:#1a1a2e;">230 231</div>
-              </div>
-              <div style="background:white;border-radius:10px;padding:14px 16px;box-shadow:0 1px 4px rgba(0,0,0,0.07);text-align:center;">
-                <div style="font-size:11px;color:#6b7280;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">Couverture</div>
-                <div style="font-size:22px;font-weight:900;color:#1a1a2e;">145 029</div>
-                <div style="font-size:11px;color:#9ca3af;">personnes atteintes</div>
-              </div>
-              <div style="background:white;border-radius:10px;padding:14px 16px;box-shadow:0 1px 4px rgba(0,0,0,0.07);text-align:center;">
-                <div style="font-size:11px;color:#6b7280;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">Taux d'engagement</div>
-                <div style="font-size:22px;font-weight:900;color:#22c55e;">6,80 %</div>
-                <div style="font-size:11px;color:#9ca3af;">engagements / couverture</div>
-              </div>
-            </div>
-          </td>
+        <tr class="tbl-total">
+          <td>Total Vidéo Factory</td>
+          <td class="r">928,34 €</td>
+          <td class="r">7 266</td>
+          <td class="r">0,13 €</td>
+          <td class="r">172 424</td>
+          <td class="r">14 534</td>
+          <td class="c">5 100</td><td class="c">1 985</td><td class="c">1 262</td><td class="c">728</td>
+          <td class="c"><span class="hook hook-g">8,4 %</span></td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <!-- PERFORMANCES DÉTAILLÉES VF -->
-  <div style="margin-top:16px;background:white;border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.07);">
-    <div onclick="toggleVideoPerfDetail()" style="cursor:pointer;background:#f0f9ff;border-bottom:1px solid #bfdbfe;padding:11px 16px;display:flex;align-items:center;justify-content:center;gap:8px;">
-      <span style="font-size:12px;font-weight:600;color:#1d4ed8;">📊 Voir les performances détaillées par vidéo</span>
-      <span id="vidperf-arrow" style="font-size:12px;color:#1d4ed8;">▼</span>
-    </div>
-    <div id="vidperf-detail" style="display:none;padding:20px;">
-      <!-- KPIs globaux -->
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px;max-width:900px;margin-left:auto;margin-right:auto;">
-        <div style="background:#f8faff;border-radius:10px;padding:12px 16px;text-align:center;border-top:3px solid #1d4ed8;">
-          <div style="font-size:10px;color:#6b7280;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;">Vues 3 secondes</div>
-          <div style="font-size:22px;font-weight:900;color:#1a1a2e;">26 866</div>
-        </div>
-        <div style="background:#f8faff;border-radius:10px;padding:12px 16px;text-align:center;border-top:3px solid #22c55e;">
-          <div style="font-size:10px;color:#6b7280;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;">Vues complètes (100%)</div>
-          <div style="font-size:22px;font-weight:900;color:#1a1a2e;">1 069</div>
-        </div>
-        <div style="background:#f8faff;border-radius:10px;padding:12px 16px;text-align:center;border-top:3px solid #f59e0b;">
-          <div style="font-size:10px;color:#6b7280;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;">Hook Rate global</div>
-          <div style="font-size:22px;font-weight:900;color:#1a1a2e;">11,7 %</div>
-          <div style="font-size:10px;color:#9ca3af;">vues 3s / impressions</div>
-        </div>
-      </div>
-      <!-- Tableau par vidéo -->
-      <table style="width:100%;border-collapse:collapse;font-size:12px;">
-        <thead>
-          <tr style="background:#1a1a2e;color:white;">
-            <th style="padding:10px 14px;text-align:left;font-size:11px;font-weight:600;">Vidéo</th>
-            <th style="padding:10px 14px;text-align:right;font-size:11px;font-weight:600;">Dépensé</th>
-            <th style="padding:10px 14px;text-align:right;font-size:11px;font-weight:600;">Engagements</th>
-            <th style="padding:10px 14px;text-align:right;font-size:11px;font-weight:600;">CPE</th>
-            <th style="padding:10px 14px;text-align:right;font-size:11px;font-weight:600;">Impressions</th>
-            <th style="padding:10px 14px;text-align:right;font-size:11px;font-weight:600;">Vues 3s</th>
-            <th style="padding:10px 14px;text-align:center;font-size:11px;font-weight:600;">25%</th>
-            <th style="padding:10px 14px;text-align:center;font-size:11px;font-weight:600;">50%</th>
-            <th style="padding:10px 14px;text-align:center;font-size:11px;font-weight:600;">75%</th>
-            <th style="padding:10px 14px;text-align:center;font-size:11px;font-weight:600;">100%</th>
-            
-            <th style="padding:10px 14px;text-align:center;font-size:11px;font-weight:600;">Hook Rate</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr style="border-bottom:1px solid #f0f0f5;">
-            <td style="padding:11px 14px;font-weight:600;color:#1a1a2e;">Visite Cliente Annecy<div style="font-size:10px;color:#9ca3af;font-weight:400;">07/05 → 17/05</div></td>
-            <td style="padding:11px 14px;text-align:right;">249,91 €</td>
-            <td style="padding:11px 14px;text-align:right;font-weight:700;">2 300</td>
-            <td style="padding:11px 14px;text-align:right;color:#15803d;font-weight:700;">0,11 €</td>
-            <td style="padding:11px 14px;text-align:right;color:#6b7280;">32 066</td>
-            <td style="padding:11px 14px;text-align:right;">5 764</td>
-            <td style="padding:11px 14px;text-align:center;color:#6b7280;">2 834</td>
-            <td style="padding:11px 14px;text-align:center;color:#6b7280;">1 366</td>
-            <td style="padding:11px 14px;text-align:center;color:#6b7280;">884</td>
-            <td style="padding:11px 14px;text-align:center;color:#6b7280;">231</td>
-            <td style="padding:11px 14px;text-align:center;"><span style="background:#dcfce7;color:#15803d;font-weight:700;padding:3px 10px;border-radius:20px;font-size:11px;">18,0 %</span></td>
-          </tr>
-          <tr style="border-bottom:1px solid #f0f0f5;">
-            <td style="padding:11px 14px;font-weight:600;color:#1a1a2e;">Pourquoi choisir Aterno<div style="font-size:10px;color:#9ca3af;font-weight:400;">23/04 → 08/05</div></td>
-            <td style="padding:11px 14px;text-align:right;">229,67 €</td>
-            <td style="padding:11px 14px;text-align:right;font-weight:700;">1 980</td>
-            <td style="padding:11px 14px;text-align:right;">0,12 €</td>
-            <td style="padding:11px 14px;text-align:right;color:#6b7280;">30 097</td>
-            <td style="padding:11px 14px;text-align:right;">3 951</td>
-            <td style="padding:11px 14px;text-align:center;color:#6b7280;">2 220</td>
-            <td style="padding:11px 14px;text-align:center;color:#6b7280;">1 392</td>
-            <td style="padding:11px 14px;text-align:center;color:#6b7280;">1 060</td>
-            <td style="padding:11px 14px;text-align:center;color:#6b7280;">213</td>
-            <td style="padding:11px 14px;text-align:center;"><span style="background:#dcfce7;color:#15803d;font-weight:700;padding:3px 10px;border-radius:20px;font-size:11px;">13,1 %</span></td>
-          </tr>
-          <tr style="border-bottom:1px solid #f0f0f5;">
-            <td style="padding:11px 14px;font-weight:600;color:#1a1a2e;">Visite Agence Orléans<div style="font-size:10px;color:#9ca3af;font-weight:400;">30/04 → 10/05</div></td>
-            <td style="padding:11px 14px;text-align:right;">239,36 €</td>
-            <td style="padding:11px 14px;text-align:right;font-weight:700;">1 903</td>
-            <td style="padding:11px 14px;text-align:right;">0,13 €</td>
-            <td style="padding:11px 14px;text-align:right;color:#6b7280;">33 154</td>
-            <td style="padding:11px 14px;text-align:right;">5 006</td>
-            <td style="padding:11px 14px;text-align:center;color:#6b7280;">2 225</td>
-            <td style="padding:11px 14px;text-align:center;color:#6b7280;">1 357</td>
-            <td style="padding:11px 14px;text-align:center;color:#6b7280;">288</td>
-            <td style="padding:11px 14px;text-align:center;color:#6b7280;">172</td>
-            <td style="padding:11px 14px;text-align:center;"><span style="background:#dcfce7;color:#15803d;font-weight:700;padding:3px 10px;border-radius:20px;font-size:11px;">15,1 %</span></td>
-          </tr>
-          <tr style="border-bottom:1px solid #f0f0f5;">
-            <td style="padding:11px 14px;font-weight:600;color:#1a1a2e;">Aterno Corporate Orléans<div style="font-size:10px;color:#9ca3af;font-weight:400;">12/05 → 20/05</div></td>
-            <td style="padding:11px 14px;text-align:right;">249,88 €</td>
-            <td style="padding:11px 14px;text-align:right;font-weight:700;">1 893</td>
-            <td style="padding:11px 14px;text-align:right;">0,13 €</td>
-            <td style="padding:11px 14px;text-align:right;color:#6b7280;">27 142</td>
-            <td style="padding:11px 14px;text-align:right;">3 296</td>
-            <td style="padding:11px 14px;text-align:center;color:#6b7280;">1 949</td>
-            <td style="padding:11px 14px;text-align:center;color:#6b7280;">1 091</td>
-            <td style="padding:11px 14px;text-align:center;color:#6b7280;">286</td>
-            <td style="padding:11px 14px;text-align:center;color:#6b7280;">165</td>
-            <td style="padding:11px 14px;text-align:center;"><span style="background:#dcfce7;color:#15803d;font-weight:700;padding:3px 10px;border-radius:20px;font-size:11px;">12,1 %</span></td>
-          </tr>
-          <tr style="border-bottom:1px solid #f0f0f5;">
-            <td style="padding:11px 14px;font-weight:600;color:#1a1a2e;">FB - Client Luttre<div style="font-size:10px;color:#9ca3af;font-weight:400;">22/05 → 31/05</div></td>
-            <td style="padding:11px 14px;text-align:right;">249,54 €</td>
-            <td style="padding:11px 14px;text-align:right;font-weight:700;">1 555</td>
-            <td style="padding:11px 14px;text-align:right;">0,16 €</td>
-            <td style="padding:11px 14px;text-align:right;color:#6b7280;">79 258</td>
-            <td style="padding:11px 14px;text-align:right;">7 551</td>
-            <td style="padding:11px 14px;text-align:center;color:#6b7280;">1 904</td>
-            <td style="padding:11px 14px;text-align:center;color:#6b7280;">837</td>
-            <td style="padding:11px 14px;text-align:center;color:#6b7280;">319</td>
-            <td style="padding:11px 14px;text-align:center;color:#6b7280;">190</td>
-            <td style="padding:11px 14px;text-align:center;"><span style="background:#fef3c7;color:#92400e;font-weight:700;padding:3px 10px;border-radius:20px;font-size:11px;">9,5 %</span></td>
-          </tr>
-          <tr style="border-bottom:1px solid #f0f0f5;">
-            <td style="padding:11px 14px;font-weight:600;color:#1a1a2e;">Prix Augmente<div style="font-size:10px;color:#9ca3af;font-weight:400;">29/05 → en cours</div></td>
-            <td style="padding:11px 14px;text-align:right;">70,63 €</td>
-            <td style="padding:11px 14px;text-align:right;font-weight:700;">226</td>
-            <td style="padding:11px 14px;text-align:right;">0,31 €</td>
-            <td style="padding:11px 14px;text-align:right;color:#6b7280;">28 514</td>
-            <td style="padding:11px 14px;text-align:right;">1 298</td>
-            <td style="padding:11px 14px;text-align:center;color:#6b7280;">829</td>
-            <td style="padding:11px 14px;text-align:center;color:#6b7280;">374</td>
-            <td style="padding:11px 14px;text-align:center;color:#6b7280;">221</td>
-            <td style="padding:11px 14px;text-align:center;color:#6b7280;">98</td>
-            <td style="padding:11px 14px;text-align:center;"><span style="background:#fef3c7;color:#92400e;font-weight:700;padding:3px 10px;border-radius:20px;font-size:11px;">4,6 %</span></td>
-          </tr>
-          <tr style="background:#f0f4ff;font-weight:700;color:#1d4ed8;">
-            <td style="padding:11px 14px;">💰 Total Vidéo Factory</td>
-            <td style="padding:11px 14px;text-align:right;">1 288,99 €</td>
-            <td style="padding:11px 14px;text-align:right;">9 857</td>
-            <td style="padding:11px 14px;text-align:right;">0,13 €</td>
-            <td style="padding:11px 14px;text-align:right;">230 231</td>
-            <td style="padding:11px 14px;text-align:right;">26 866</td>
-            <td style="padding:11px 14px;text-align:center;">11 961</td>
-            <td style="padding:11px 14px;text-align:center;">6 417</td>
-            <td style="padding:11px 14px;text-align:center;">3 058</td>
-            <td style="padding:11px 14px;text-align:center;">1 069</td>
-            <td style="padding:11px 14px;text-align:center;"><span style="background:#dcfce7;color:#15803d;font-weight:700;padding:3px 10px;border-radius:20px;font-size:11px;">11,7 %</span></td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- Légendes -->
-      <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-        <div style="display:flex;align-items:center;gap:10px;font-size:11px;color:#6b7280;">
-          <span style="font-weight:600;">Hook Rate :</span>
-          <span style="background:#dcfce7;color:#15803d;font-weight:600;padding:2px 8px;border-radius:10px;">≥ 7 % Bon</span>
-          <span style="background:#fef3c7;color:#92400e;font-weight:600;padding:2px 8px;border-radius:10px;">3–7 % Moyen</span>
-          <span style="background:#fee2e2;color:#991b1b;font-weight:600;padding:2px 8px;border-radius:10px;">< 3 % Faible</span>
-        </div>
-      </div>
-      <div style="margin-top:12px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:10px 14px;font-size:12px;color:#166534;">
-        💡 <strong>Visite Cliente Annecy</strong> affiche le meilleur hook rate du mois (18,0%) et le CPE le plus bas (0,11 €). <strong>FB - Client Luttre</strong> génère beaucoup de vues 3s (7 551) mais <strong>Prix Augmente</strong> démarré tardivement, les données sont encore partielles.
-      </div>
-    </div>
+  <div style="margin-top:10px;display:flex;align-items:center;gap:10px;font-size:11px;color:#6b7280;">
+    <span style="font-weight:600;">Hook Rate :</span>
+    <span class="hook hook-g">≥ 7 % Bon</span>
+    <span class="hook hook-m">3–7 % Moyen</span>
+    <span class="hook hook-b">< 3 % Faible</span>
+  </div>
+
+  <div class="insight">
+    <strong>Agence Luttre</strong> et <strong>Installation Luttre</strong> confirment que le format visite terrain performe bien, avec des hook rates à 15,6 % et 13,0 % et les CPE les plus bas du mois (0,10 € et 0,11 €). Le contenu ancré dans le quotidien des clients retient mieux que le contenu institutionnel. <strong>Prix Augmente</strong> souffre d'un hook faible (3,4 %) malgré 55 000 impressions. Les premières secondes sont à retravailler.
   </div>
 </div>
 
-<div class="footer">Document réalisé par Novembre communication · Aterno x Novembre · Rapport mensuel Mai 2026</div>
+
+
+<div class="section" style="margin-top:28px;">
+  <div class="section-head">
+    <span style="font-size:18px;">💡</span>
+    <div>
+      <div class="section-tag">Analyse</div>
+      <div class="section-title">Recommandations</div>
+    </div>
+  </div>
+  <div style="background:white;border-radius:12px;padding:24px 28px;box-shadow:0 1px 4px rgba(0,0,0,0.07);">
+
+    <div style="margin-bottom:20px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#15803d;margin-bottom:10px;">Ce qui fonctionne bien</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+        <li style="display:flex;gap:10px;font-size:12.5px;color:#374151;"><span style="color:#15803d;font-weight:700;flex-shrink:0;">→</span> Le Solaire FL affiche un CPL de 23,76 € en juin, en nette amélioration par rapport à mai (41,23 €). La dynamique est bonne, à maintenir.</li>
+        <li style="display:flex;gap:10px;font-size:12.5px;color:#374151;"><span style="color:#15803d;font-weight:700;flex-shrink:0;">→</span> Le taux de transformation en RDV Solaire est extrêmement solide à 34,6 %.</li>
+        <li style="display:flex;gap:10px;font-size:12.5px;color:#374151;"><span style="color:#15803d;font-weight:700;flex-shrink:0;">→</span> Les vidéos format "visite terrain" (Agence Luttre, Installation Luttre) performent nettement mieux que les formats institutionnels. Hook rates à 15,6 % et 13,0 %, CPE à 0,10 € et 0,11 €.</li>
+        <li style="display:flex;gap:10px;font-size:12.5px;color:#374151;"><span style="color:#15803d;font-weight:700;flex-shrink:0;">→</span> Le taux d'engagement Vidéo Factory est stable à 6,26 % sur la couverture, avec un CPE constant à 0,13 €.</li>
+      </ul>
+    </div>
+
+    <div style="margin-bottom:20px;padding-top:16px;border-top:1px solid #f0f0f5;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#d97706;margin-bottom:10px;">Points de vigilance</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+        <li style="display:flex;gap:10px;font-size:12.5px;color:#374151;"><span style="color:#d97706;font-weight:700;flex-shrink:0;">→</span> Le Bilan Thermique est en baisse régulière en volume de RDV (40 en avril, 26 en mai, 12 en juin). Le CPL remonte à 33,87 € vs 26,03 € en mai. C'est tout à fait normal, pas de nouvelles créas et budget réduit. Les taux de RDV restent très bons.</li>
+        <li style="display:flex;gap:10px;font-size:12.5px;color:#374151;"><span style="color:#d97706;font-weight:700;flex-shrink:0;">→</span> Le Solaire LP reste cher à 133,90 € par lead avec seulement 27 leads générés. Le rapport coût/volume n'est pas encore optimal. De nouvelles créas vont être ajoutées et le CPL est déjà en train de baisser en juillet.</li>
+      </ul>
+    </div>
+
+    <div style="padding-top:16px;border-top:1px solid #f0f0f5;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#1d4ed8;margin-bottom:10px;">Actions recommandées</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+        <li style="display:flex;gap:10px;font-size:12.5px;color:#374151;"><span style="color:#1d4ed8;font-weight:700;flex-shrink:0;">→</span> Continuer à investir sur le Solaire FL et dupliquer les visuels qui ont les meilleurs CPL (tranche 45-54 ans à 20,47 €).</li>
+        <li style="display:flex;gap:10px;font-size:12.5px;color:#374151;"><span style="color:#1d4ed8;font-weight:700;flex-shrink:0;">→</span> Revoir la stratégie Solaire LP : ajouter des visuels ou revoir la landing page pour améliorer le taux de conversion.</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer">Document réalisé par Novembre Communication · Aterno × Novembre · Rapport mensuel Juin 2026</div>
 
 <script>
-function toggleDemogBT() {
-  var r = document.getElementById('row-demog-bt');
-  var a = document.getElementById('demog-bt-arrow');
-  if (r.style.display === 'none') { r.style.display = 'table-row'; a.textContent = '▲'; }
-  else { r.style.display = 'none'; a.textContent = '▼'; }
+function toggleBT() {
+  var d = document.getElementById('bt-demo');
+  var a = document.getElementById('bt-arr');
+  d.style.display = d.style.display === 'none' ? 'table-row' : 'none';
+  a.textContent = d.style.display === 'none' ? '▼' : '▲';
 }
-function toggleDemogSol() {
-  var r = document.getElementById('row-demog-sol');
-  var a = document.getElementById('demog-sol-arrow');
-  if (r.style.display === 'none') { r.style.display = 'table-row'; a.textContent = '▲'; }
-  else { r.style.display = 'none'; a.textContent = '▼'; }
-}
-function toggleVideoPerfDetail() {
-  var d = document.getElementById('vidperf-detail');
-  var a = document.getElementById('vidperf-arrow');
-  if (d.style.display === 'none') { d.style.display = 'block'; a.textContent = '▲'; }
-  else { d.style.display = 'none'; a.textContent = '▼'; }
+function toggleSol() {
+  var d = document.getElementById('sol-demo');
+  var a = document.getElementById('sol-arr');
+  d.style.display = d.style.display === 'none' ? 'table-row' : 'none';
+  a.textContent = d.style.display === 'none' ? '▼' : '▲';
 }
 </script>
 </body>
